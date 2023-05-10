@@ -114,4 +114,5 @@ export const resizeInitProvider: Provider = {
   provide: APP_INITIALIZER,
   useFactory: resizeBgFn,
   deps: [BgService],
+  multi: true
 }
