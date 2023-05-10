@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  :host {
+    @apply p-4 flex justify-between relative z-[20];
+    transition: background-color 100ms ease-in-out;
+    &.is-active {
+      @apply bg-black;
+    }
+
+    opy-nav-menu {
+      @apply absolute left-0 right-0 top-[100%];
+    }
+
+    &.dark-bg {
+      @apply bg-black;
+    }
+  }
+}

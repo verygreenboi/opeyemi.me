@@ -1,0 +1,7 @@
+p {
+  @apply md:max-w-[48ch];
+  @apply text-[12px] md:text-[14px] lg:text-base mb-[12px] opacity-50 leading-[18px] font-normal;
+  &:first-of-type {
+    @apply text-base md:text-base lg:text-2xl opacity-100 leading-6;
+  }
+}

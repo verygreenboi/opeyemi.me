@@ -1,0 +1,50 @@
+<header [class]="headerBgClass$ | async" [class.is-active]="menuOpened$ | async" opy-header></header>
+<div class="content">
+  <div class="main-content">
+    <main>
+      <section opy-intro-section></section>
+      <section *ngIf="isMobile$ | async" class="carousel md:hidden">
+        <div class="header px-4 mb-4 flex justify-between">
+          <h2>Portfolio projects</h2>
+          <div class="carousel-bullets">
+            <span class="carousel-bullet" *ngFor="let item of carouselItems; let i = index"
+                  [class.is-active]="i === currentIndex"></span>
+          </div>
+        </div>
+        <ngx-glide
+            type="carousel"
+            (ran)="onMoved($event)"
+            [autoplay]="5000"
+            [listenToEvents]="true"
+            [showBullets]="false"
+            [peek]="2"
+            [showArrows]="false">
+          <ng-container *ngFor="let item of carouselItems">
+            <span opy-carousel-item
+                  [url]="item.url"
+                  [imageUrl]="item.imageUrl"
+                  [title]="item.title"
+                  [description]="item.description">
+            </span>
+          </ng-container>
+        </ngx-glide>
+      </section>
+    </main>
+    <section opy-contact></section>
+  </div>
+  <div opyScrollerContainer #scrollContainer *ngIf="!(isMobile$ | async)" class="scrolling-portfolio-wrapper">
+    <div class="scrolling-portfolio">
+      <ng-container *ngFor="let item of carouselItems">
+        <span opy-carousel-item
+              opyScrollerItem
+              mode="slider"
+              [url]="item.url"
+              [imageUrl]="item.imageUrl"
+              [title]="item.title"
+              [description]="item.description">
+        </span>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<footer opy-footer></footer>

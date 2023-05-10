@@ -1,0 +1,19 @@
+:host {
+  @apply flex flex-col mx-4 gap-2;
+  background: rgba(18, 19, 26, 0.4);
+}
+
+h3 {
+  @apply text-xl leading-[25px];
+}
+
+ul {
+  @apply flex flex-col divide-y divide-[#252833];
+}
+
+li {
+  @apply flex justify-between text-gray-500 py-1;
+  a {
+    @apply text-white hover:text-gray-200;
+  }
+}

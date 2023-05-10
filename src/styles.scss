@@ -1,1 +1,47 @@
+@use '@glidejs/glide/src/assets/sass/glide.core' as *;
+@use '@glidejs/glide/src/assets/sass/glide.theme' as *;
+
+$hamburger-active-layer-color : white;
+$hamburger-layer-color: white;
+$hamburger-layer-width: 24px;
+$hamburger-layer-height: 2px;
+$hamburger-layer-spacing: 4px;
+$hamburger-hover-opacity: 1;
+
+@import 'node_modules/hamburgers/_sass/hamburgers/hamburgers.scss';
+
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  html, body {
+    @apply bg-black text-white w-full min-h-screen;
+  }
+  opy-root {
+    @apply flex flex-col w-screen min-h-screen lg:max-h-full;
+  }
+  .circles {
+    @apply absolute left-0 max-w-full;
+    min-height: 100%;
+    overflow: clip;
+    pointer-events: none;
+
+    .ellipses {
+      filter: blur(184.083px);
+      width: 389.52px;
+      height: 389.52px;
+
+      &:first-of-type {
+        background: #969CFF;
+        transform: translateX(-140px);
+      }
+
+      &:nth-of-type(2) {
+        background: #FFC2C2;
+        transform: translateX(140px);
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<ng-container *ngIf="!!template" [ngTemplateOutlet]="template"></ng-container>
+
+<ng-container *ngIf="!template">
+  <div [ngClass]="{'flex-col': mode === 'carousel', 'flex-row-reverse': mode === 'slider'}" class="container flex w-full md:ml-auto">
+    <div *ngIf="imageUrl" class="max-w-[240px] md:min-w-[500px] mx-auto lg:mx-[0]">
+      <img [ngSrc]="imageUrl" [alt]="title" [width]="width" [height]="155" class="md:ml-auto"/>
+    </div>
+    <div class="desc-wrapper px-4 mt-4 max-w-full flex flex-col lg:max-w[340px] lg:justify-end">
+      <h3 class="md:text-ellipsis text-base leading-6 font-medium">{{ title }}</h3>
+      <div class="desc">
+        <p class="prose prose-invert w-full break-words whitespace-pre md:text-ellipsis">{{ description }}</p>
+      </div>
+      <a *ngIf="url" [href]="url" target="_blank" class="text-[#F4C700] ml-auto mb-4 w-fit block">View project</a>
+    </div>
+  </div>
+</ng-container>

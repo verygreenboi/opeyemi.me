@@ -1,0 +1,30 @@
+:host {
+  @apply flex justify-between px-4 pb-4;
+}
+ul.social-media {
+  @apply flex gap-[12px];
+
+  li {
+    @apply flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#222325];
+
+    &:before {
+      content: "";
+    }
+
+    &.linkedin:before {
+      @apply w-[12px] h-[12px] block bg-[url('/assets/img/linkedin.svg')] bg-no-repeat bg-contain;;
+    }
+
+    &.behance:before {
+      @apply w-[12px] h-[12px] block bg-[url('/assets/img/behance.svg')] bg-no-repeat bg-contain;;
+    }
+
+    &.dribbble:before {
+      @apply w-[12px] h-[12px] block bg-[url('/assets/img/dribbble.svg')] bg-no-repeat bg-contain;;
+    }
+  }
+}
+
+.attribution {
+  @apply w-fit flex flex-col justify-end text-end text-[12px];
+}

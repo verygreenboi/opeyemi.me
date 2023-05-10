@@ -1,0 +1,9 @@
+:host {
+  z-index: 10000;
+  @apply px-4 bg-black;
+}
+.navigation-links {
+  height: calc(100vh - 86px);
+  background: linear-gradient(180deg, #000000 22.24%, rgba(0, 0, 0, 0) 100%);
+  backdrop-filter: blur(12px);
+}
