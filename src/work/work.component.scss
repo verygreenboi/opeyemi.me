@@ -1,0 +1,39 @@
+:host {
+  @apply flex flex-col justify-between min-h-screen bg-black z-[20];
+}
+
+main {
+  @apply flex flex-col flex-1 bg-black;
+}
+
+.profile {
+  position: sticky;
+  top: 0;
+  @apply bg-black;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  background-color: white;
+  top: 0;
+  bottom: 18px;
+  left: 0;
+  margin-left: -3px;
+  margin-top: 18px;
+}
+
+.timeline > .content-wrap {
+  &:after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    left: -38px;
+    background-color: white;
+    top: 18px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+}

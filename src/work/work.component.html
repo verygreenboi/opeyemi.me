@@ -1,0 +1,85 @@
+<header opy-header class="dark-bg"></header>
+<ng-container [ngTemplateOutlet]="profile"></ng-container>
+
+<main class="px-4 bg-black pb-4 md:max-w-[670px] md:mx-auto lg:max-w-[1192px] md:mt-4">
+  <ng-container [ngTemplateOutlet]="intro"></ng-container>
+  <ng-container [ngTemplateOutlet]="xp"></ng-container>
+</main>
+
+<ng-template #intro>
+  <p>
+    A UX/UI Designer with over 9 years of experience in creating innovative and user-friendly products for various industries, including Fintech, Logistics & Supply Chain, Edu-tech, and E-Sport Entertainment. Skilled in all stages of the design lifecycle, from user research to implementation. Increased user satisfaction by 50% and company growth by 30% through cutting-edge technologies and adaptable interface designs. A dedicated team player and a skilled communicator who can envision and develop novel products that align with organisational goals.
+  </p>
+</ng-template>
+
+<ng-template #xp>
+  <div class="xp-list relative">
+    <div class="work mt-4">
+      <h2 class="uppercase text-[12px] font-normal">Work experience</h2>
+      <div class="timeline relative">
+      <div class="mb-2 content-wrap relative ml-8" *ngFor="let item of workList">
+        <div class="content">
+          <div class="meta-data flex flex-col md:flex-row md:gap-2">
+            <h3>{{ item.title }}</h3>
+            <div class="extra-data">
+              <p class="text-[10px] font-normal leading-0">{{ item.company }}</p>
+              <p class="text-[10px] font-normal leading-0">{{ item.tenure }}</p>
+            </div>
+          </div>
+          <p *ngIf="item.description" class="text-[10px] font-normal opacity-50 leading-0 mt-2">{{ item.description }}</p>
+
+          <ul class="list-disc list-outside opacity-50">
+            <li *ngFor="let duty of item.duties">
+              <p class="text-[10px] font-normal leading-0">{{ duty }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="qualifications mt-4 mb-[40px]">
+      <h2 class="uppercase text-[12px] font-normal">Qualifications</h2>
+      <div class="details flex flex-col md:flex-row md:gap-2">
+        <p>B.Sc. in Mechanical Engineering</p>
+        <div class="extra flex-col flex md:items-start md:justify-center">
+          <p class="text-[10px] font-normal leading-0">Federal University of Technology, Minna</p>
+          <p class="text-[10px] font-normal leading-0">2011</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="trainings mt-4">
+      <h2 class="uppercase text-[12px] font-normal">trainings and certifications</h2>
+      <div class="training opacity-50 text-[12px]">
+        <span class="date mr-4 w-[25px] inline-block">2022</span><span class="title">Leadership and People Management</span>
+      </div>
+      <div class="training opacity-50 text-[12px]">
+        <span class="date mr-4 w-[25px] inline-block">2022</span><span class="title">Strategic Innovation</span>
+      </div>
+      <div class="training opacity-50 text-[12px]">
+        <span class="date mr-4 w-[25px] inline-block">2021</span><span class="title">Google UX Design</span>
+      </div>
+      <div class="training opacity-50 text-[12px]">
+        <span class="date mr-4 w-[25px] inline-block">2021</span><span class="title">Product Management</span>
+      </div>
+      <div class="training opacity-50 text-[12px]">
+        <span class="date mr-4 w-[25px] inline-block">2020</span><span class="title">UX,UI & Design Thinking</span>
+      </div>
+      <div class="training opacity-50 text-[12px]">
+        <span class="date mr-4 w-[25px] inline-block">2019</span><span class="title">Product Design- UX/UI</span>
+      </div>
+    </div>
+
+  </div>
+</ng-template>
+
+<ng-template #profile>
+  <div class="profile md:max-w-[670px] lg:max-w-[1192px] md:mx-auto flex min-h-[112px] w-full px-4 py-6 gap-2 items-center z-10">
+    <div class="avatar w-[64px] h-[64px] rounded-full bg-[url('assets/img/avatar.png')]"></div>
+    <div class="details flex flex-col">
+      <h1 class="name">Opeyemi Ajagbe</h1>
+      <p class="title text-[12px] font-normal opacity-50 leading-0">Senior UI/UX Designer</p>
+      <span class="location text-[10px] font-normal opacity-50 leading-0">Lagos, Nigeria</span>
+    </div>
+  </div>
+</ng-template>
