@@ -31,3 +31,13 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
+      - name: Build app
+        if: github.event_name == 'push'
+        run: pnpm run build
+      - name: Archive production artifacts
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-without-markdown
+          path: |
+            dist
