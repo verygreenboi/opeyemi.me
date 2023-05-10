@@ -1,5 +1,10 @@
-<img class="logo" ngSrc="assets/img/logo.svg" alt="Opeyemi" height="36" width="139">
-<div class="menu-wrap lg:hidden">
-  <opy-hamburger></opy-hamburger>
+<div class="wrapper">
+  <img class="logo" ngSrc="assets/img/logo.svg" alt="Opeyemi" height="36" width="139">
+  <div class="menu-wrap lg:hidden">
+    <opy-hamburger></opy-hamburger>
+  </div>
+  <opy-nav-menu></opy-nav-menu>
 </div>
-<opy-nav-menu></opy-nav-menu>
+<div class="content w-full">
+  <ng-content></ng-content>
+</div>

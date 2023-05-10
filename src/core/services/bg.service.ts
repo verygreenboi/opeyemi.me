@@ -11,6 +11,7 @@ export class BgService implements OnDestroy {
   private readonly resizeSubject = new Subject<string | null>();
   private readonly destroy$ = new Subject<void>();
   private renderer: Renderer2;
+  private selector = 'opy-home';
 
   headerDarkBg$ = this.headerDarkBgSubject.asObservable();
   constructor(
@@ -29,9 +30,24 @@ export class BgService implements OnDestroy {
       .subscribe(id => this.doResize(id));
   }
 
-  init() {
+  init(selector?: string) {
     console.log('BgService: init');
+
+    if (selector) {
+      this.selector = selector;
+    }
+
     this.resizeSubject.next('circles');
+  }
+
+  hideCircles() {
+    const circles = this.document.body.querySelectorAll('.circles')[0];
+    this.renderer.setStyle(circles, 'opacity', '0');
+  }
+
+  showCircles() {
+    const circles = this.document.body.querySelectorAll('.circles')[0];
+    this.renderer.setStyle(circles, 'opacity', '1');
   }
 
   toggleHeaderDarkBg(isDark: boolean) {
@@ -69,7 +85,7 @@ export class BgService implements OnDestroy {
       return;
     }
     // get body width and height
-    const root = this.document.querySelectorAll('opy-home')[0] as HTMLElement;
+    const root = this.document.querySelectorAll(this.selector)[0] as HTMLElement;
     const bodyWidth = root.offsetWidth;
     const bodyHeight = root.offsetHeight;
 
