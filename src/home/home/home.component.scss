@@ -1,118 +1,112 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:host {
+  @apply flex flex-col justify-between min-h-screen;
 
-@layer components {
-  :host {
-    @apply flex flex-col justify-between min-h-screen;
+  header {
+    position: sticky;
+    top: 0;
+  }
 
-    header {
-      position: sticky;
-      top: 0;
+  main, .content {
+    @apply flex flex-col flex-1;
+
+    .main-content {
+      @apply flex flex-col h-full flex-1;
     }
+  }
 
-    main, .content {
-      @apply flex flex-col flex-1;
 
-      .main-content {
-        @apply flex flex-col h-full flex-1;
+  .content {
+    @apply h-full;
+    @apply md:items-end;
+    .main-content {
+      @apply md:fixed md:top-[86px] md:w-[50%] md:flex-none md:self-start;
+      @media (min-width: 768px) {
+        height: calc(100% - 138px);
       }
-    }
-
-
-    .content {
-      @apply h-full;
-      @apply md:items-end;
-      .main-content {
-        @apply md:fixed md:top-[86px] md:w-[50%] md:flex-none md:self-start;
-        @media (min-width: 768px) {
-          height: calc(100% - 138px);
-        }
-        z-index: 10;
-        pointer-events: none;
-        section[opy-contact] {
-          @apply md:mb-32 md:w-[304px];
-          pointer-events: bounding-box;
-        }
-
+      z-index: 10;
+      pointer-events: none;
+      section[opy-contact] {
+        @apply md:mb-32 md:w-[304px];
+        pointer-events: bounding-box;
       }
 
     }
 
-    section[opy-intro-section] {
-      @apply px-4 lg:px-8;
+  }
+
+  section[opy-intro-section] {
+    @apply px-4 lg:px-8;
+  }
+
+  section.carousel {
+    @apply py-4 mb-4;
+    background: rgba(0, 0, 0, 0.6);
+
+    .header {
+      h2 {
+        @apply text-xl font-semibold tracking-[.02em];
+      }
     }
 
-    section.carousel {
-      @apply py-4 mb-4;
-      background: rgba(0, 0, 0, 0.6);
+    .carousel-bullets {
+      @apply flex justify-center mt-2;
 
-      .header {
-        h2 {
-          @apply text-xl font-semibold tracking-[.02em];
-        }
-      }
+      .carousel-bullet {
+        @apply w-2 h-2 rounded-full bg-white mx-1 opacity-20;
+        transition: width 0.2s ease-in-out;
 
-      .carousel-bullets {
-        @apply flex justify-center mt-2;
+        &.is-active {
+          @apply w-[4rem] opacity-100;
+          background: rgba(255, 255, 255, 0.2);
 
-        .carousel-bullet {
-          @apply w-2 h-2 rounded-full bg-white mx-1 opacity-20;
-          transition: width 0.2s ease-in-out;
-
-          &.is-active {
-            @apply w-[4rem] opacity-100;
-            background: rgba(255, 255, 255, 0.2);
-
-            &:before {
-              content: '';
-              @apply block w-[2rem] h-2 rounded-full bg-white opacity-100;
-            }
+          &:before {
+            content: '';
+            @apply block w-[2rem] h-2 rounded-full bg-white opacity-100;
           }
         }
       }
     }
+  }
 
-    section[opy-contact] {
-      @apply py-2 px-4 mb-4 lg:ml-8;
-      @media (min-width: 768px) {
-        z-index: 4;
-      }
+  section[opy-contact] {
+    @apply py-2 px-4 mb-4 lg:ml-8;
+    @media (min-width: 768px) {
+      z-index: 4;
+    }
+  }
+}
+
+.scrolling-portfolio-wrapper {
+  height: calc(100% - 138px);
+  scroll-behavior: smooth;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  @apply hidden md:block;
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
+
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    background: transparent;
+  }
+
+  .scrolling-portfolio {
+    margin: 50% 0 50% 0;
+    @apply flex flex-col gap-4;
+  }
+
+  @media (min-width: 1024px) {
+    .scrolling-portfolio {
+      margin: 35% 0 35% 0;
     }
   }
 
-  .scrolling-portfolio-wrapper {
-    height: calc(100% - 138px);
-    scroll-behavior: smooth;
-    position: fixed;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 100%;
-    @apply hidden md:block;
-    @media (min-width: 1024px) {
-      width: 50%;
-    }
-
-
-    &::-webkit-scrollbar {
-      display: none;
-      width: 0;
-      background: transparent;
-    }
-
-    .scrolling-portfolio {
-      margin: 50% 0 50% 0;
-      @apply flex flex-col gap-4;
-    }
-
-    @media (min-width: 1024px) {
-      .scrolling-portfolio {
-        margin: 35% 0 35% 0;
-      }
-    }
-
-    span[opy-carousel-item] {
-      height: calc(100% / 3);
-    }
+  span[opy-carousel-item] {
+    height: calc(100% / 3);
   }
 }
