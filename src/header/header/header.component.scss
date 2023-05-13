@@ -12,5 +12,8 @@
     opy-nav-menu {
       @apply absolute left-0 right-0 top-[100%] z-[11];
     }
+    .lg-header {
+      @apply hidden lg:flex lg:min-w-[720px] lg:ml-auto lg:mr-8 lg:justify-end lg:gap-4;
+    }
   }
 }
