@@ -9,10 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: dawidd6/action-download-artifact@v2
         with:
           name: dist-without-markdown
           path: dist
+          workflow: build.yml
       - name: Sync to s3
         uses: jakejarvis/s3-sync-action@master
         with:
