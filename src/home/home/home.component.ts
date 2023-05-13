@@ -15,7 +15,7 @@ import { SectionComponent } from '../../core/component';
 import { CarouselItemComponent, CarouselWrapperComponent } from '../../shared/carousel';
 import { ContactComponent } from '../../contact/contact.component';
 import { MenuService } from '../../header/menu.service';
-import { delay, distinctUntilChanged, map, of, startWith, switchMap } from 'rxjs';
+import { combineLatest, delay, distinctUntilChanged, map, of, startWith, switchMap, tap } from 'rxjs';
 import { NgxGlideComponent } from 'ngx-glide';
 import { BgService } from '../../core/services';
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -30,7 +30,14 @@ import { ScrollerContainerDirective, ScrollerItemDirective } from '../../shared/
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements AfterViewInit {
-  headerBgClass$ = this.bgService.headerDarkBg$.pipe(
+  collapse$ = this.menuService.menuState$.pipe(
+    map(menuState => !menuState),
+  );
+  headerBgClass$ = combineLatest([
+    this.bgService.headerDarkBg$,
+    this.collapse$
+  ]).pipe(
+    map(([darkBg, collapse]) => darkBg || !collapse),
     map(darkBg => darkBg ? 'dark-bg' : ''),
     startWith(''),
     distinctUntilChanged(),

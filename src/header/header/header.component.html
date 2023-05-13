@@ -1,10 +1,21 @@
 <div class="wrapper">
-  <img class="logo" ngSrc="assets/img/logo.svg" alt="Opeyemi" height="36" width="139">
+  <img opyCloseMenu routerLink="/" class="logo hover:cursor-pointer" ngSrc="assets/img/logo.svg" alt="Opeyemi" height="36" width="139">
   <div class="menu-wrap lg:hidden">
     <opy-hamburger></opy-hamburger>
   </div>
-  <opy-nav-menu></opy-nav-menu>
+  <opy-nav-menu>
+    <ng-container [ngTemplateOutlet]="menu"></ng-container>
+  </opy-nav-menu>
+  <ul class="lg-header">
+    <ng-container [ngTemplateOutlet]="menu"></ng-container>
+  </ul>
 </div>
 <div class="content w-full">
   <ng-content></ng-content>
 </div>
+
+<ng-template #menu>
+  <li><a opyCloseMenu href="#">Portfolio</a></li>
+  <li><a opyCloseMenu routerLink="/work">Work</a></li>
+  <li><a opyCloseMenu href="#">Articles</a></li>
+</ng-template>
