@@ -2,9 +2,8 @@ name: Sync to s3
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 13 * * 3'
-    - cron: '0 13 * * 5'
-    - cron: '0 13 * * 7'
+    - cron: '30 5 * * 1,3'
+    - cron: '30 5 * * 2,4'
 jobs:
   download_artifact:
     runs-on: ubuntu-latest
